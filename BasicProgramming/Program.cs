@@ -90,9 +90,10 @@ namespace BasicProgramming
                         Console.WriteLine("Please input from 1 to 4 only");
                         break;
                 }
+                Console.WriteLine("--------------------------------");
                 Console.WriteLine("Type \"Yes\" to continue program");
                 confirm = Console.ReadLine().ToLower();
-                Console.Clear();
+                Console.Clear();  
             }
         }
     }
