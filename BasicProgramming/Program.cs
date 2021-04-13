@@ -21,34 +21,50 @@ namespace BasicProgramming
                     "\n4. Sum the inputted array"
                 );
                 Console.WriteLine("Choose menu:");
-                int menu = Convert.ToInt32(Console.ReadLine());
+                int menu = 0;
+                try
+                {
+                    menu = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Please input a number!");
+                }
                 switch (menu)
                 {
                     case 1:
                         Console.WriteLine("------ Body Mass Index ------");
-                        Console.WriteLine("Input weight: ");
-                        float beratBadan = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Input height: ");
-                        float tinggiBadan = Convert.ToInt32(Console.ReadLine());
-                        tinggiBadan /= 100;
-                        float BMI = beratBadan / (tinggiBadan * tinggiBadan);
-                        if (BMI < 18.1)
+                        float beratBadan = 0;
+                        float tinggiBadan = 0;
+                        try
                         {
-                            Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Underweight");
+                            Console.WriteLine("Input weight: ");
+                            beratBadan = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Input height: ");
+                            tinggiBadan = Convert.ToInt32(Console.ReadLine());
+                            tinggiBadan /= 100;
+                            float BMI = beratBadan / (tinggiBadan * tinggiBadan);
+                            if (BMI < 18.1)
+                            {
+                                Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Underweight");
+                            }
+                            else if (BMI < 23.1)
+                            {
+                                Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Normal");
+                            }
+                            else if (BMI < 28.1)
+                            {
+                                Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Overweight");
+                            }
+                            else
+                            {
+                                Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Obese");
+                            }
                         }
-                        else if (BMI < 23.1)
+                        catch (Exception)
                         {
-                            Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Normal");
+                            Console.WriteLine("Please input a number only");
                         }
-                        else if (BMI < 28.1)
-                        {
-                            Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Overweight");
-                        }
-                        else
-                        {
-                            Console.WriteLine("BMI : " + BMI.ToString("F2") + ". You're Obese");
-                        }
-                        
                         break;
                     case 2:
                         Console.WriteLine("------ Reprint Name ------");
@@ -76,18 +92,25 @@ namespace BasicProgramming
                     case 4:
                         Console.WriteLine("------ Sum the inputted array ------");
                         Console.WriteLine("input array length:");
-                        int inputLength = Convert.ToInt32(Console.ReadLine());
-                        int[] input = new int[inputLength];
-                        int sum = 0;
-                        for (int i = 0; i < inputLength; i++)
+                        try
                         {
-                            input[i] = Convert.ToInt32(Console.ReadLine());
-                            sum += input[i];
+                            int inputLength = Convert.ToInt32(Console.ReadLine());
+                            int[] input = new int[inputLength];
+                            int sum = 0;
+                            for (int i = 0; i < inputLength; i++)
+                            {
+                                input[i] = Convert.ToInt32(Console.ReadLine());
+                                sum += input[i];
+                            }
+                            Console.WriteLine("Total sum : " + sum);
                         }
-                        Console.WriteLine("Total sum : "+sum);
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Please input a number!");
+                        }
                         break;
                     default:
-                        Console.WriteLine("Please input from 1 to 4 only");
+                        Console.WriteLine("Please input from 1 to 4 only!");
                         break;
                 }
                 Console.WriteLine("--------------------------------");
